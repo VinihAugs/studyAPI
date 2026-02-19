@@ -1,0 +1,2 @@
+export { AdvancedHeroContainer } from './AdvancedHeroContainer';
+

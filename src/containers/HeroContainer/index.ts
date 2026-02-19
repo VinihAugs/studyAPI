@@ -1,0 +1,2 @@
+export { HeroContainer } from './HeroContainer';
+
