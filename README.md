@@ -1,6 +1,6 @@
 # Guia Interativo de APIs
 
-Um guia completo e imersivo sobre APIs, construído como uma single-page application com scrollytelling 3D. O projeto aborda métodos HTTP, status codes, consumo no front-end, gerenciamento de estado e construção de rotas no back-end — tudo de forma visual e didática.
+Um guia completo e imersivo sobre APIs, construído com scrollytelling 3D em duas páginas. O projeto aborda métodos HTTP, status codes, consumo no front-end, gerenciamento de estado, construção de rotas no back-end e conceitos avançados como HTTP Headers, Cache, Autenticação vs Autorização, PUT vs PATCH e evolução de protocolos — tudo de forma visual e didática.
 
 ## Stack Tecnológica
 
@@ -86,12 +86,27 @@ O projeto roda em `http://localhost:8080`.
 | `npm run lint` | Verificação de código com ESLint |
 | `npm run test` | Executa testes com Vitest |
 
+## Páginas
+
+| Rota | Conteúdo |
+|---|---|
+| `/` | Guia principal — O que é API, Métodos HTTP, Status Codes, Front-end, Gerenciamento de Estado, Back-end |
+| `/advanced` | Conceitos avançados — HTTP Headers, Idempotência, Autenticação vs Autorização, Cache, PUT vs PATCH, Evolução de Protocolos |
+
 ## Estrutura do Projeto
 
 ```
 src/
-├── components/       # Componentes React (seções, UI, 3D)
-│   ├── ui/           # Componentes base do shadcn/ui
+├── components/
+│   ├── ui/                    # Componentes base (shadcn/ui)
+│   ├── advanced/              # Seções da página avançada
+│   │   ├── AdvancedNavbar.tsx
+│   │   ├── HeadersSection.tsx
+│   │   ├── IdempotencySection.tsx
+│   │   ├── AuthSection.tsx
+│   │   ├── CacheSection.tsx
+│   │   ├── PutPatchSection.tsx
+│   │   └── ProtocolsSection.tsx
 │   ├── Navbar.tsx
 │   ├── HeroSection.tsx
 │   ├── HttpMethodsSection.tsx
@@ -99,9 +114,12 @@ src/
 │   ├── FrontendExamples.tsx
 │   ├── StateManagementSection.tsx
 │   ├── BackendExamples.tsx
+│   ├── CodeSnippet.tsx
 │   └── Scene3D.tsx
-├── pages/            # Páginas da aplicação
-├── hooks/            # Custom hooks
-├── lib/              # Utilitários
-└── index.css         # Estilos globais + design tokens
+├── pages/
+│   ├── Index.tsx              # Página principal
+│   └── Advanced.tsx           # Página avançada
+├── hooks/
+├── lib/
+└── index.css
 ```

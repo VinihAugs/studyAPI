@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 interface NavItem {
   id: string;
   label: string;
-  shortLabel: string;
 }
 
 const navItems: NavItem[] = [
-  { id: 'hero', label: 'Início', shortLabel: 'Início' },
-  { id: 'methods', label: 'Métodos HTTP', shortLabel: 'Métodos' },
-  { id: 'status', label: 'Status Codes', shortLabel: 'Status' },
-  { id: 'frontend', label: 'Front-end', shortLabel: 'Front' },
-  { id: 'state', label: 'Gerenciamento', shortLabel: 'State' },
-  { id: 'backend', label: 'Back-end', shortLabel: 'Back' },
+  { id: 'adv-hero', label: 'Início' },
+  { id: 'headers', label: 'Headers' },
+  { id: 'idempotency', label: 'Idempotência' },
+  { id: 'auth', label: 'Auth' },
+  { id: 'cache', label: 'Cache' },
+  { id: 'put-patch', label: 'PUT vs PATCH' },
+  { id: 'protocols', label: 'Protocolos' },
 ];
 
-interface NavbarProps {
+interface AdvancedNavbarProps {
   activeSection: string;
 }
 
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function AdvancedNavbar({ activeSection }: AdvancedNavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -38,14 +38,6 @@ export default function Navbar({ activeSection }: NavbarProps) {
     }
   };
 
-  const resolveActive = (section: string) => {
-    if (['get', 'head', 'post', 'put', 'patch', 'delete', 'options', 'trace'].includes(section)) return 'methods';
-    if (section.startsWith('status-')) return 'status';
-    return section;
-  };
-
-  const currentNav = resolveActive(activeSection);
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -55,16 +47,16 @@ export default function Navbar({ activeSection }: NavbarProps) {
       }`}
     >
       <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between">
-        <button
-          onClick={() => handleClick('hero')}
+        <Link
+          to="/"
           className="font-mono font-bold text-sm tracking-widest text-primary hover:text-primary/80 transition-colors"
         >
           {'<API />'}
-        </button>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
-            const isActive = currentNav === item.id;
+            const isActive = activeSection === item.id;
             return (
               <li key={item.id}>
                 <button
@@ -85,10 +77,10 @@ export default function Navbar({ activeSection }: NavbarProps) {
           })}
           <li>
             <Link
-              to="/advanced"
-              className="relative px-3 py-1.5 rounded-md text-xs font-mono text-accent hover:text-accent/80 transition-all duration-300"
+              to="/"
+              className="relative px-3 py-1.5 rounded-md text-xs font-mono text-primary hover:text-primary/80 transition-all duration-300"
             >
-              Avançado →
+              ← Básico
             </Link>
           </li>
         </ul>
@@ -98,32 +90,16 @@ export default function Navbar({ activeSection }: NavbarProps) {
           className="md:hidden flex flex-col gap-1 p-2 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Menu"
         >
-          <span
-            className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${
-              mobileOpen ? 'rotate-45 translate-y-[6px]' : ''
-            }`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${
-              mobileOpen ? 'opacity-0' : ''
-            }`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${
-              mobileOpen ? '-rotate-45 -translate-y-[6px]' : ''
-            }`}
-          />
+          <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''}`} />
+          <span className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[6px]' : ''}`} />
         </button>
       </nav>
 
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
-          mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
+      <div className={`md:hidden overflow-hidden transition-all duration-500 ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <ul className="flex flex-col gap-1 px-6 pb-4 pt-2 bg-background/80 backdrop-blur-xl border-b border-border/30">
           {navItems.map((item) => {
-            const isActive = currentNav === item.id;
+            const isActive = activeSection === item.id;
             return (
               <li key={item.id}>
                 <button
@@ -134,18 +110,18 @@ export default function Navbar({ activeSection }: NavbarProps) {
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
                   }`}
                 >
-                  {item.shortLabel}
+                  {item.label}
                 </button>
               </li>
             );
           })}
           <li>
             <Link
-              to="/advanced"
+              to="/"
               onClick={() => setMobileOpen(false)}
-              className="w-full text-left px-4 py-2.5 rounded-lg text-sm font-mono text-accent hover:bg-accent/10 transition-all duration-300 block"
+              className="w-full text-left px-4 py-2.5 rounded-lg text-sm font-mono text-primary hover:bg-primary/10 transition-all duration-300 block"
             >
-              Avançado →
+              ← Básico
             </Link>
           </li>
         </ul>
