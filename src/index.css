@@ -66,8 +66,9 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: var(--font-display);
+    background: #030712;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -131,6 +132,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+#root {
+  background: #030712;
+  min-height: 100vh;
 }
 
 section[id] {
