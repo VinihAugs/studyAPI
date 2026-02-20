@@ -23,7 +23,7 @@ export const PageLayout = ({ children, activeSection, navbar }: PageLayoutProps)
       </div>
 
       {/* Page Content */}
-      <div className="relative min-h-screen z-10">
+      <div className="relative min-h-screen z-10 pt-20 md:pt-24">
         {children}
       </div>
     </>
