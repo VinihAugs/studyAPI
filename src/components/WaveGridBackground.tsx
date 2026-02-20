@@ -213,9 +213,6 @@ export function WaveGridBackground({
             "radial-gradient(ellipse at 50% 70%, transparent 0%, transparent 40%, #030712 100%)",
         }}
       />
-
-      {/* Content layer */}
-      {children && <div className="relative z-10 h-full w-full">{children}</div>}
     </div>
   )
 }

@@ -132,11 +132,17 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 #root {
   background: #030712;
   min-height: 100vh;
+  position: relative;
 }
 
 section[id] {
