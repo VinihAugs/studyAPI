@@ -1,6 +1,3 @@
-/**
- * Container que agrupa todas as seções avançadas
- */
 import { forwardRef } from 'react';
 import HeadersSection from '@/components/advanced/HeadersSection';
 import IdempotencySection from '@/components/advanced/IdempotencySection';

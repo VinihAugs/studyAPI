@@ -1,7 +1,3 @@
-/**
- * Página Advanced (Conceitos Avançados)
- * Compõe containers individuais seguindo Clean Architecture
- */
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdvancedNavbar from '@/components/advanced/AdvancedNavbar';

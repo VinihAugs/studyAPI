@@ -1,6 +1,3 @@
-/**
- * Constantes e mapeamentos para a feature HttpMethods
- */
 import { ColorKey } from '@/core/types';
 
 export const colorMap: Record<ColorKey, string> = {

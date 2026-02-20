@@ -1,6 +1,3 @@
-/**
- * Container para o Hero da página Advanced
- */
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Section } from '@/shared/components/Section';

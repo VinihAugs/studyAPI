@@ -1,7 +1,3 @@
-/**
- * Página principal (Index)
- * Compõe containers individuais seguindo Clean Architecture
- */
 import { useEffect, useRef, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { PageLayout } from '@/shared/components/PageLayout';

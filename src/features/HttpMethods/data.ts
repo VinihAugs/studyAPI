@@ -1,6 +1,3 @@
-/**
- * Dados estáticos para a feature HttpMethods
- */
 import { HttpMethod, DebugTool } from './types';
 
 export const httpMethods: HttpMethod[] = [

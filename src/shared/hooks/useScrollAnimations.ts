@@ -1,6 +1,3 @@
-/**
- * Hook para gerenciar animações de scroll com GSAP
- */
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,7 +17,6 @@ export const useScrollAnimations = ({
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Detectar mudanças de seção
       const sections = gsap.utils.toArray<HTMLElement>('[data-section]');
       sections.forEach((section) => {
         ScrollTrigger.create({
@@ -38,7 +34,6 @@ export const useScrollAnimations = ({
         });
       });
 
-      // Animações de entrada para seções
       const allSections = containerRef.current?.querySelectorAll('section');
       allSections?.forEach((section) => {
         gsap.fromTo(

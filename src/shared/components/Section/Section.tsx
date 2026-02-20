@@ -1,7 +1,3 @@
-/**
- * Componente base para seções
- * Fornece estrutura comum e atributos data-section para scroll tracking
- */
 import { forwardRef, ReactNode } from 'react';
 import { SectionConfig } from '@/core/types';
 

@@ -1,6 +1,3 @@
-/**
- * Types para a feature HttpMethods
- */
 import { ColorKey } from '@/core/types';
 
 export interface HttpMethod {

@@ -1,6 +1,3 @@
-/**
- * Componente para exibir badges de propriedades dos métodos HTTP
- */
 interface PropBadgeProps {
   label: string;
   active: boolean;

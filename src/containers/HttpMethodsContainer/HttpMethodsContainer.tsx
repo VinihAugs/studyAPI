@@ -1,7 +1,3 @@
-/**
- * Container para a seção de Métodos HTTP
- * Encapsula toda a lógica e apresentação da seção
- */
 import { forwardRef, useState } from 'react';
 import { Section } from '@/shared/components/Section';
 import { httpMethods, debugTools } from '@/features/HttpMethods/data';

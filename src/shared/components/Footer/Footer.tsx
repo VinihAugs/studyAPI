@@ -1,6 +1,3 @@
-/**
- * Footer reutilizável
- */
 import { ReactNode } from 'react';
 
 interface FooterProps {

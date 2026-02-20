@@ -1,6 +1,3 @@
-/**
- * Container para a seção de Exemplos Backend
- */
 import { forwardRef } from 'react';
 import BackendExamples from '@/components/BackendExamples';
 

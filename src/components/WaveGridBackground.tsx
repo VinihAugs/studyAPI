@@ -4,13 +4,9 @@ import { cn } from "@/lib/utils"
 export interface WaveGridBackgroundProps {
   className?: string
   children?: React.ReactNode
-  /** Grid cell size */
   gridSize?: number
-  /** Wave height */
   waveHeight?: number
-  /** Wave animation speed */
   waveSpeed?: number
-  /** Line color */
   color?: string
 }
 
@@ -47,7 +43,6 @@ export function WaveGridBackground({
     let animationId: number
     let tick = 0
 
-    // Resize handler
     const handleResize = () => {
       const rect = container.getBoundingClientRect()
       width = rect.width
@@ -62,7 +57,6 @@ export function WaveGridBackground({
     const ro = new ResizeObserver(handleResize)
     ro.observe(container)
 
-    // Parse color
     const hexToRgb = (hex: string) => {
       const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
       return result
@@ -76,7 +70,6 @@ export function WaveGridBackground({
 
     const rgb = hexToRgb(color)
 
-    // Get wave height at a point
     const getWaveHeight = (x: number, z: number, t: number) => {
       return (
         Math.sin(x * 0.02 + t) * Math.cos(z * 0.02 + t * 0.8) * waveHeight +
@@ -85,7 +78,6 @@ export function WaveGridBackground({
       )
     }
 
-    // Project 3D to 2D with perspective
     const project = (x: number, y: number, z: number) => {
       const perspective = 600
       const cameraY = 150
@@ -101,7 +93,6 @@ export function WaveGridBackground({
       }
     }
 
-    // Animation
     const animate = () => {
       tick += 0.015 * waveSpeed
 
@@ -113,11 +104,9 @@ export function WaveGridBackground({
       const startX = (-cols * gridSize) / 2
       const startZ = 0
 
-      // Draw grid from back to front
       for (let row = rows - 1; row >= 0; row--) {
         const z = startZ + row * gridSize
 
-        // Draw horizontal line
         ctx.beginPath()
         let firstPoint = true
 
@@ -139,7 +128,6 @@ export function WaveGridBackground({
         ctx.lineWidth = Math.max(0.5, (1 - row / rows) * 1.5)
         ctx.stroke()
 
-        // Draw vertical lines for this row
         if (row < rows - 1) {
           for (let col = 0; col <= cols; col++) {
             const x = startX + col * gridSize
@@ -152,7 +140,6 @@ export function WaveGridBackground({
             const p1 = project(x, waveY1, z1)
             const p2 = project(x, waveY2, z2)
 
-            // Height-based brightness
             const avgHeight = (waveY1 + waveY2) / 2
             const heightBrightness = 0.3 + (avgHeight / waveHeight + 1) * 0.35
             const distBrightness = 0.2 + (1 - row / rows) * 0.6
@@ -168,7 +155,6 @@ export function WaveGridBackground({
         }
       }
 
-      // Glow overlay at peaks
       const gradient = ctx.createRadialGradient(
         width / 2,
         height * 0.5,
@@ -197,7 +183,6 @@ export function WaveGridBackground({
     <div ref={containerRef} className={cn("fixed inset-0 overflow-hidden bg-[#030712]", className)}>
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
-      {/* Top fade */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-1/3"
         style={{
@@ -205,7 +190,6 @@ export function WaveGridBackground({
         }}
       />
 
-      {/* Vignette */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{

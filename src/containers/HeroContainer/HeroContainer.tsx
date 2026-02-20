@@ -1,7 +1,3 @@
-/**
- * Container para a seção Hero
- * Encapsula toda a lógica e apresentação da seção inicial
- */
 import { forwardRef } from 'react';
 import { Section } from '@/shared/components/Section';
 

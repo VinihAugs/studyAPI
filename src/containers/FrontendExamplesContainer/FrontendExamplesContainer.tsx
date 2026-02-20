@@ -1,6 +1,3 @@
-/**
- * Container para a seção de Exemplos Frontend
- */
 import { forwardRef } from 'react';
 import FrontendExamples from '@/components/FrontendExamples';
 
